@@ -1,3 +1,12 @@
+:root {
+    --main-bg-color: #41414a;
+    --left-navbar-color: #252526;
+    --top-navbar-color: lightseagreen; 
+    --accent-font-color: #ffe151;
+    --accent-font-color-light: #ffefa1;
+    --main-padding: 15px;
+  }
+
 html, body, .App-container{
     min-height: 100vh;
     overflow: hidden;
@@ -6,7 +15,7 @@ html, body, .App-container{
 body{
     margin: 0 auto;
     font-family: sans-serif;
-    background-color: #41414a;
+    background-color: var(--main-bg-color);
 }
   
 .App-container{
@@ -22,15 +31,86 @@ body{
     transition: 0.2s;
     }
 
-.navbar-left-container{
-    background-color: #252526;
-    width: 20vw;
-    height: 100vh;
+.inner-container input{
+    background: none;
+    font-size: 16px;
+    outline:none;
+    border:0;
+    
 }
 
+.navbar-left-container{
+    background-color: var(--left-navbar-color);
+    width: 20vw;
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1;
+}   
+
+.navbar-left-container .scroll-menu-label{
+    margin-top: 20vh;
+    align-self: center;
+}
+
+.horizontal-scroll-container{
+    background-color: var(--main-bg-color);
+    margin: 15px;
+}
+.menu-item {
+    padding: 0 40px;
+    user-select: none;
+    cursor: pointer;
+    border: none;
+  }
+
+  .scroll-menu-arrow {
+    padding: 20px;
+    cursor: pointer;
+    background-color: cadetblue;
+  }
+
 .navbar-top-container{
-    background-color: lightseagreen;
+    background-color: var(--top-navbar-color);
     width: 100vw;
     height: 8vh;
-    position: fixed;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    color: var(--accent-font-color);
+    justify-content: space-between;
+    font-size: 20px;
+    z-index: 2;
 }
+
+.navbar-top-container img{
+    margin-left: 1em;
+    height: 7vh;
+}
+
+.navbar-top-container div, div > button{
+    display: flex;
+    align-items: center;
+    margin-right:1em;
+}
+
+.navbar-top-container .icon {
+    height: 5vh;
+    margin:5px;
+}
+
+.navbar-top-container button{
+    border:0;
+    font-size: 20px;
+    background: none;
+    color: var(--accent-font-color);
+    cursor: pointer;
+    outline:none;
+}
+
+.navbar-top-container button:hover{
+    color: var(--accent-font-color-light);
+}
+

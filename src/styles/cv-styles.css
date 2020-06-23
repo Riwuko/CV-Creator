@@ -1,0 +1,26 @@
+
+.template-item1{
+    background-color: lavender;
+    height: 100%;
+}
+
+.table-item1 .personal-data{
+    display: flex;
+    
+}
+
+.template-item2{
+    background-color: darkgoldenrod;
+    height: 100%;
+}
+
+.template-item3{
+    background-color: darkolivegreen;
+    height: 100%;
+}
+
+.template-item4{
+    background-color: darkmagenta;
+    height: 100%;
+}
+
