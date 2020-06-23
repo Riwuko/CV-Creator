@@ -1,0 +1,36 @@
+html, body, .App-container{
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  
+body{
+    margin: 0 auto;
+    font-family: sans-serif;
+    background-color: #41414a;
+}
+  
+.App-container{
+    display: flex;
+}
+
+.inner-container{
+    background-color: blanchedalmond;
+    align-self: center;
+    margin: auto;
+    width: 25vw;
+    height: calc(25vw * 1.41);
+    transition: 0.2s;
+    }
+
+.navbar-left-container{
+    background-color: #252526;
+    width: 20vw;
+    height: 100vh;
+}
+
+.navbar-top-container{
+    background-color: lightseagreen;
+    width: 100vw;
+    height: 8vh;
+    position: fixed;
+}
