@@ -1,26 +1,93 @@
 
 .template-item1{
-    background-color: lavender;
+    background-color:white;
     height: 100%;
-}
-
-.table-item1 .personal-data{
-    display: flex;
+    padding-top: 1px;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-weight: 200;
     
 }
 
+
+.template-item1 .table{
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+    justify-content: space-between;
+    line-height: 100%;
+    padding: 30px;
+}
+
+
+.template-item1 table td{
+    min-width: 50px;
+    padding: 5px 2px;
+    max-width: 300px;;
+}
+
+.template-item1 header{
+    margin-top: 20px;
+    margin-right: 15px;
+    padding: 5px 30px;
+    padding-top: 30px;
+    border-radius: 0 35px 35px 0;
+    border-bottom: 3px solid lightseagreen;
+    background-color: #c5e8ed;
+    line-height: 180%;
+}
+
+.template-item1 h1{
+    font-size: 26px;
+    color: rgb(1, 148, 148);
+    margin: 0;
+}
+
+.template-item1 h2{
+    font-size: 16px;
+    margin: 0;
+    color: white;
+}
+
+.template-item1 h3{
+    border-left: 3px solid lightseagreen;
+    padding-left:5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.template-item1 .table-left-col{
+    padding: 10px 0px;
+}
+
+.template-item1 .table-right-col{
+    background-color: #ebfffd;
+    padding: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-radius: 15px;
+    max-width: 200px;
+}
+
+.template-item1 .personal-data-item-external{
+    padding: 30px;
+}
+
+
+
 .template-item2{
-    background-color: darkgoldenrod;
+
     height: 100%;
 }
 
 .template-item3{
-    background-color: darkolivegreen;
+
     height: 100%;
 }
 
 .template-item4{
-    background-color: darkmagenta;
+
     height: 100%;
 }
 

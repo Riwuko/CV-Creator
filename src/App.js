@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import './styles/styles.css';
 import './styles/cv-styles.css';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import { PDFExport } from '@progress/kendo-react-pdf';
 
 /* Components */
 import CvPage from './components/CvPage';
@@ -15,7 +14,7 @@ export default class App extends Component {
     super();
     this.state = {
         style:{
-          zoom:1,
+          zoom:0.7,
         },
         choosenTemplate: 'item1',
         choosenBackground: 0,
@@ -47,20 +46,13 @@ export default class App extends Component {
     })
   }
 
-  handleDownloadPDF(){
-    html2canvas(document.querySelector("#capture")).then(canvas => {
-      document.body.appendChild(canvas)
-    });
-    const input = document.getElementById('capture');
-    html2canvas(input)
-      .then((canvas) => {
-        const imgData = canvas.toDataURL('image/png');   
-        
-        const pdf = new jsPDF();
-        pdf.addImage(imgData, 'PNG', 0, 0);
-        pdf.save("curriculumVitae.pdf");  
-      });
+  sleep (milliseconds) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
 
+  handleDownloadPDF(){
+    document.getElementById("capture").setAttribute('style','transorm:scale("1")');
+    this.resume.save();
   }
 
   handleAddHyperlink(e){
@@ -103,15 +95,25 @@ render(){
         handleChooseBackground = {this.handleChooseBackground}
         handleChooseBackgroundColor = {this.handleChooseBackgroundColor}
       />
+      <PDFExport paperSize={'Letter'}
+        fileName="curriculumVitae.pdf"
+        title="Curriculum Vitae"
+        subject=""
+        keywords=""
+        ref={(r) => this.resume = r}>
+        
       <div className='inner-container'onWheel={this.handleWheel} 
            style={{transform:`scale(${this.state.style.zoom})`}}
+           id='capture'
        >
-        <div className={cvTemplateClass} >
+        <div className={cvTemplateClass}>
           <CvPage 
             choosenTemplate={this.state.choosenTemplate}
           />
          </div>
        </div>
+  
+      </PDFExport>
 
     </div>
   );
