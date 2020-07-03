@@ -129,12 +129,46 @@ export default class CvPage extends Component{
         );
     }
 
+    generateScheme2(){
+        return(
+            <div>
+                <section className='table'>
+                    <div className='table-left-col'>
+                        <div className='personal-data-item'>
+                            <h3><EditableText value="Work experience"/></h3>
+                        </div>
+                        <div className='personal-data-item'>
+                            <h3><EditableText value="Work experience"/></h3>
+                        </div>
+                        <div className='personal-data-item'>
+                            <h3><EditableText value="Work experience"/></h3>
+                        </div>
+                        <div className='personal-data-item'>
+                            <h3><EditableText value="Work experience"/></h3>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        )
+    }
+
     render(){
         const choosenTemplate = this.props.choosenTemplate;
         var choosenFunction = '';
-        if (choosenTemplate==='item1'){ 
-            choosenFunction=this.generateScheme1();
-        } 
+        switch (choosenTemplate){
+            case 'item1':
+                choosenFunction=this.generateScheme1();
+                break;
+            case 'item2':
+                choosenFunction=this.generateScheme2();
+                break;
+            case 'item3':
+                choosenFunction=this.generateScheme2();
+                break;
+            case 'item4':
+                choosenFunction=this.generateScheme2();
+                break;
+        }
 
         return(
             <div >

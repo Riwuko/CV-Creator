@@ -108,7 +108,12 @@
 .template-item2{
     padding-top: 1px;
     height: 100%;
+    color: white;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-weight: 200;
 }
+
+
 
 .template-item3{
     padding-top: 1px;

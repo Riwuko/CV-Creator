@@ -31,18 +31,22 @@ export default class App extends Component {
   handleChooseTemplate(selection){
     this.setState({
       choosenTemplate: selection,
+      choosenBackgroundColor:0,
+      choosenBackground:0,
     })
   }
 
   handleChooseBackground(selection){
     this.setState({
       choosenBackground: selection,
+      choosenBackgroundColor:0,
     })
   }
 
   handleChooseBackgroundColor(selection){
     this.setState({
       choosenBackgroundColor: selection,
+      choosenBackground:0,
     })
   }
 
@@ -106,7 +110,7 @@ render(){
            style={{transform:`scale(${this.state.style.zoom})`}}
            id='capture'
        >
-        <div className={cvTemplateClass} style={this.state.choosenBackgroundColor !== 0? { 'backgroundColor': this.state.choosenBackgroundColor}:{},this.state.choosenBackground !== 0? { 'backgroundImage': this.state.choosenBackground}:{}}>
+        <div className={cvTemplateClass} style={this.state.choosenBackground !== 0? { 'backgroundImage': `url(${this.state.choosenBackground})`}:{} || this.state.choosenBackgroundColor !== 0? { 'backgroundColor': this.state.choosenBackgroundColor}:{}  }>
           <CvPage 
             choosenTemplate={this.state.choosenTemplate}
           />

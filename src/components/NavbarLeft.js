@@ -80,7 +80,6 @@ export default class NavbarLeft extends Component{
         this.setState({
             selectedBackgroundColor: color.hex, 
         });
-        console.log('to ja piszem',color.hex);
         this.props.handleChooseBackgroundColor(color.hex);
         
     }
