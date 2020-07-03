@@ -24,10 +24,15 @@ const templatesList = [
   
   export const Menu = (list) => list.map(el => {
     const { name,value } = el;
-  
+    var properText=name;
+    if(value.includes("jpg")||value.includes("png")){ 
+      properText=<div style={{ 'height':100, 'width':100, 'backgroundImage': `url(${value})`,'backgroundSize':150 }}>
+      </div>;
+    }
+
     return (
       <MenuItem
-        text={name}
+        text={properText}
         key={value}
       />
     );
@@ -68,7 +73,6 @@ export default class NavbarLeft extends Component{
         this.setState({
             selectedBackground: key,
         });
-        console.log(key);
         this.props.handleChooseBackground(key);
     }
 
@@ -76,6 +80,7 @@ export default class NavbarLeft extends Component{
         this.setState({
             selectedBackgroundColor: color.hex, 
         });
+        console.log('to ja piszem',color.hex);
         this.props.handleChooseBackgroundColor(color.hex);
         
     }
@@ -93,12 +98,16 @@ export default class NavbarLeft extends Component{
         );
     }
 
+
+
     generateBackgroundImages(){
       const imagesFiles=[]
       for (var x in registry){
-          const file =(`../styles/img/bck/${registry[x]}`);
-          imagesFiles.push({name:`${file.slice(18,-4)}`, value:`${file}`});
+        const imageName = registry[x];
+        const file =require('../styles/img/bck/'+imageName);
+        imagesFiles.push({name:`${file.slice(27,-6)}`, value:`${file}`});
     }
+    
     return imagesFiles;
     }
 
@@ -109,11 +118,6 @@ export default class NavbarLeft extends Component{
         const backgroundsList = this.generateBackgroundImages();
         const { selectedBackground } = this.state.selectedBackground;
         const backgroundMenu = Menu(backgroundsList, selectedBackground);
-
-        // const { selectedBackgroundColor } = this.state.selectedBackgroundColor;
-        // const backgroundColorMenu = Menu(backgroundColorsList, selectedBackgroundColor);
-
-        this.generateBackgroundImages();
 
         return(
             <nav className='navbar-left-container'>
