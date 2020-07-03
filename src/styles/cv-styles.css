@@ -1,21 +1,29 @@
 
+:root {
+    --template-item1-darker-background: #c5e8ed;
+    --template-item1-lighter-background: #ebfffd;
+    --template-item1-font-accent: rgb(1, 148, 148);
+
+    
+  }
+
 .template-item1{
     background-color:white;
     height: 100%;
     padding-top: 1px;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     font-weight: 200;
-    
 }
 
 
 .template-item1 .table{
     display: flex;
     flex-direction: row;
-    font-size: 10px;
+    font-size: 12px;
     justify-content: space-between;
-    line-height: 100%;
+    line-height: 180%;
     padding: 30px;
+    padding-bottom: 10px;
 }
 
 
@@ -32,13 +40,13 @@
     padding-top: 30px;
     border-radius: 0 35px 35px 0;
     border-bottom: 3px solid lightseagreen;
-    background-color: #c5e8ed;
-    line-height: 180%;
+    background-color: var(--template-item1-darker-background);
+    line-height: 150%;
 }
 
 .template-item1 h1{
     font-size: 26px;
-    color: rgb(1, 148, 148);
+    color: var(--template-item1-font-accent);
     margin: 0;
 }
 
@@ -49,7 +57,7 @@
 }
 
 .template-item1 h3{
-    border-left: 3px solid lightseagreen;
+    border-left: 7px solid lightseagreen;
     padding-left:5px;
     padding-top: 2px;
     padding-bottom: 2px;
@@ -62,7 +70,7 @@
 }
 
 .template-item1 .table-right-col{
-    background-color: #ebfffd;
+    background-color: var(--template-item1-lighter-background);
     padding: 10px;
     padding-right: 30px;
     padding-left: 30px;
@@ -72,6 +80,27 @@
 
 .template-item1 .personal-data-item-external{
     padding: 30px;
+    padding-top: 0;
+    font-size: 12px;
+}
+
+.dates-range{
+    color: var(--template-item1-font-accent);
+    white-space: nowrap;
+}
+
+.single-project{
+    padding-bottom: 10px;
+}
+
+.project-title{
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--template-item1-font-accent);
+}
+
+.project-description{
+    font-style: italic;
 }
 
 

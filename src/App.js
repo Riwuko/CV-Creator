@@ -106,7 +106,7 @@ render(){
            style={{transform:`scale(${this.state.style.zoom})`}}
            id='capture'
        >
-        <div className={cvTemplateClass}>
+        <div className={cvTemplateClass} style={this.state.choosenBackgroundColor !== 0? { 'backgroundColor': this.state.choosenBackgroundColor}:{},this.state.choosenBackground !== 0? { 'backgroundImage': this.state.choosenBackground}:{}}>
           <CvPage 
             choosenTemplate={this.state.choosenTemplate}
           />

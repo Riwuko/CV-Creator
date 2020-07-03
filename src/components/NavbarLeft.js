@@ -1,27 +1,16 @@
 import React, {Component} from 'react';
 import ScrollMenu from 'react-horizontal-scrolling-menu';
+import { CirclePicker } from 'react-color';
+import registry from '../registry.json';
 
 // list of items
 const templatesList = [
-    { name: 'item1' },
-    { name: 'item2' },
-    { name: 'item3' },
-    { name: 'item4' },
+    { name: 'item1' , value: 'item1'},
+    { name: 'item2' , value: 'item2'},
+    { name: 'item3' , value: 'item3'},
+    { name: 'item4' , value: 'item4'},
   ];
 
-const backgroundsList = [
-    { name: 'background1'},
-    { name: 'background2'},
-    { name: 'background3'},
-    { name: 'background4'},
-];
-
-const backgroundColorsList = [
-    { name: 'bckColor1'},
-    { name: 'bckColor2'},
-    { name: 'bckColor3'},
-    { name: 'bckColor4'},
-];
 
   const MenuItem = ({ text, selected }) => {
     return (
@@ -34,12 +23,12 @@ const backgroundColorsList = [
   };
   
   export const Menu = (list) => list.map(el => {
-    const { name } = el;
+    const { name,value } = el;
   
     return (
       <MenuItem
         text={name}
-        key={name}
+        key={value}
       />
     );
   });
@@ -79,14 +68,16 @@ export default class NavbarLeft extends Component{
         this.setState({
             selectedBackground: key,
         });
+        console.log(key);
         this.props.handleChooseBackground(key);
     }
 
-    onSelectBackgroundColor = key => {
+    onSelectBackgroundColor = (color) => {
         this.setState({
-            selectedBackgroundColor: key,
+            selectedBackgroundColor: color.hex, 
         });
-        this.props.handleChooseBackgroundColor(key);
+        this.props.handleChooseBackgroundColor(color.hex);
+        
     }
 
     generateScrollMenu(data, selected, onSelect){
@@ -102,20 +93,32 @@ export default class NavbarLeft extends Component{
         );
     }
 
+    generateBackgroundImages(){
+      const imagesFiles=[]
+      for (var x in registry){
+          const file =(`../styles/img/bck/${registry[x]}`);
+          imagesFiles.push({name:`${file.slice(18,-4)}`, value:`${file}`});
+    }
+    return imagesFiles;
+    }
+
     render(){
         const { selectedTemplate } = this.state.selectedTemplate;
         const templateMenu = Menu(templatesList, selectedTemplate);
 
+        const backgroundsList = this.generateBackgroundImages();
         const { selectedBackground } = this.state.selectedBackground;
         const backgroundMenu = Menu(backgroundsList, selectedBackground);
 
-        const { selectedBackgroundColor } = this.state.selectedBackgroundColor;
-        const backgroundColorMenu = Menu(backgroundColorsList, selectedBackgroundColor);
+        // const { selectedBackgroundColor } = this.state.selectedBackgroundColor;
+        // const backgroundColorMenu = Menu(backgroundColorsList, selectedBackgroundColor);
+
+        this.generateBackgroundImages();
 
         return(
             <nav className='navbar-left-container'>
                 <div className='scroll-menu-label'>
-                    <label>Choose template</label>
+                    <label>Create your style!</label>
                 </div>
                 <div className='horizontal-scroll-container'>
                     {this.generateScrollMenu(templateMenu,selectedTemplate,this.onSelectTemplate)}
@@ -123,8 +126,12 @@ export default class NavbarLeft extends Component{
                 <div className='horizontal-scroll-container'>
                     {this.generateScrollMenu(backgroundMenu, selectedBackground, this.onSelectBackground)}
                 </div>
-                <div className='horizontal-scroll-container'>
-                    {this.generateScrollMenu(backgroundColorMenu, selectedBackgroundColor, this.onSelectBackgroundColor)}
+                <div className='color-picker-container'>
+                  <CirclePicker
+                    color={ this.state.selectedBackgroundColor}
+                    onChangeComplete={this.onSelectBackgroundColor}
+                    colors={["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688", "#4caf50", "#8bc34a", "#cddc39","#fef3bd", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#795548", "#fff","#c4def6",'#ccc',"#607d8b","#434d52","#000","#d1f1b0","#d7edfc","#fac44c","#fff5a9","#8fff84","#7ec3c6"]}
+                    />
                 </div>
             </nav>
         )
