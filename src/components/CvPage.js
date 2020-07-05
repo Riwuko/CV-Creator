@@ -135,16 +135,22 @@ export default class CvPage extends Component{
                 <section className='table'>
                     <div className='table-left-col'>
                         <div className='personal-data-item'>
-                            <h3><EditableText value="Work experience"/></h3>
+                            <h3><EditableText value="Personal detail"/></h3>
+                            {this.generatePersonalInfo()}
                         </div>
                         <div className='personal-data-item'>
-                            <h3><EditableText value="Work experience"/></h3>
+                            <h3><EditableText value="Contact details"/></h3>
+                            {this.generateContactInfo()}
                         </div>
+                    </div>
+                    <div className="table-right-col">
                         <div className='personal-data-item'>
                             <h3><EditableText value="Work experience"/></h3>
+                            {this.generateWorkInfo()}
                         </div>
                         <div className='personal-data-item'>
-                            <h3><EditableText value="Work experience"/></h3>
+                            <h3><EditableText value="Academic profile"/></h3>
+                            {this.generateAcademicInfo()}
                         </div>
                     </div>
                 </section>

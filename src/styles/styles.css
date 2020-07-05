@@ -19,21 +19,21 @@ body{
 }
 
 .inner-container{
-    background-color: blanchedalmond;
+    background-color: white;
     margin: auto;
-    width: 16.2cm;
+    width: 16.15cm;
     height: 21cm;
     box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
     }
 
 .inner-container input{
-    background: none;
+    background: inherit;
     font-size: inherit;
     font-weight: inherit;
     text-decoration: inherit;
     outline:none;
-    border:0;
-    width: 500px;
+    border: inherit;
+    width: inherit;
     font-style: inherit;
     font-family: inherit;
 }

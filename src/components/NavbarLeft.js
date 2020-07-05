@@ -5,10 +5,10 @@ import registry from '../registry.json';
 
 // list of items
 const templatesList = [
-    { name: 'item1' , value: 'item1'},
-    { name: 'item2' , value: 'item2'},
-    { name: 'item3' , value: 'item3'},
-    { name: 'item4' , value: 'item4'},
+    { name: 'item1' , value: 'item1', color: 'white'},
+    { name: 'item2' , value: 'item2', color: 'black'},
+    { name: 'item3' , value: 'item3', color: 'white'},
+    { name: 'item4' , value: 'item4', color: 'white'},
   ];
 
 
@@ -23,7 +23,7 @@ const templatesList = [
   };
   
   export const Menu = (list) => list.map(el => {
-    const { name,value } = el;
+    const { name,value,color } = el;
     var properText=name;
     if(value.includes("jpg")||value.includes("png")){ 
       properText=<div style={{ 'height':100, 'width':100, 'backgroundImage': `url(${value})`,'backgroundSize':150 }}>
@@ -33,7 +33,7 @@ const templatesList = [
     return (
       <MenuItem
         text={properText}
-        key={value}
+        key={[value,color]}
       />
     );
   });
@@ -63,17 +63,21 @@ export default class NavbarLeft extends Component{
     }
 
     onSelectTemplate = key => {
+      const keyElems = key.split(",");
         this.setState({
-            selectedTemplate: key,
+            selectedTemplate: keyElems[0],
+            selectedBackgroundColor: keyElems[1],
         });
-        this.props.handleChooseTemplate(key);
+        this.props.handleChooseTemplate(keyElems[0]);
+        this.props.handleChooseBackgroundColor(keyElems[1]);
     }
 
     onSelectBackground = key => {
+      const keyElems = key.split(",");
         this.setState({
-            selectedBackground: key,
+            selectedBackground: keyElems[0],
         });
-        this.props.handleChooseBackground(key);
+        this.props.handleChooseBackground(keyElems[0]);
     }
 
     onSelectBackgroundColor = (color) => {
@@ -103,7 +107,7 @@ export default class NavbarLeft extends Component{
       const imagesFiles=[]
       for (var x in registry){
         const imageName = registry[x];
-        const file =require('../styles/img/bck/'+imageName);
+        const file =require(`../styles/img/bck/${imageName}`);
         imagesFiles.push({name:`${file.slice(27,-6)}`, value:`${file}`});
     }
     

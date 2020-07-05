@@ -4,11 +4,20 @@
     --template-item1-lighter-background: #ebfffd;
     --template-item1-font-accent: rgb(1, 148, 148);
 
+    --template-item2-darker-background: #000;
+    --template-item2-font-accent: rgb(2, 150, 248);
     
   }
 
+.template-item1 .template-background{
+    height: 100%;
+    width: 100%;
+    padding-top: 0.1px;
+    z-index: -1;
+    position: fixed;  
+}
+
 .template-item1{
-    background-color:white;
     height: 100%;
     padding-top: 1px;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -30,7 +39,7 @@
 .template-item1 table td{
     min-width: 50px;
     padding: 5px 2px;
-    max-width: 300px;;
+    max-width: 300px;
 }
 
 .template-item1 header{
@@ -84,33 +93,83 @@
     font-size: 12px;
 }
 
-.dates-range{
+.template-item1 .dates-range{
     color: var(--template-item1-font-accent);
     white-space: nowrap;
 }
 
-.single-project{
+.template-item1 .single-project{
     padding-bottom: 10px;
 }
 
-.project-title{
+.template-item1 .project-title{
     font-weight: bold;
     font-size: 14px;
     color: var(--template-item1-font-accent);
 }
 
-.project-description{
+.template-item1 .project-description{
     font-style: italic;
 }
 
 
 
-.template-item2{
-    padding-top: 1px;
+.template-item2 .template-background{
     height: 100%;
-    color: white;
+    width: 230px;
+    padding-top: 0.1px;
+    z-index: -1;
+    position: fixed;  
+}
+
+.template-item2{
+    padding: 1px 0px 0px 0px;
+    height: 100%;
+    color: black;
+    background-color: white;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
     font-weight: 200;
+    position: fixed;
+}
+
+.template-item2 header{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: var(--template-item2-font-accent);
+}
+
+.template-item2 .table{
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    justify-content: space-between;
+    line-height: 180%;
+}
+
+
+.template-item2 table td{
+    min-width: 100px;
+    max-width: 300px;
+}
+
+.template-item2 .table-left-col{
+    padding: 0px 0px;
+    width: 300px;
+    color: white;
+}
+
+.template-item2 .table-left-col .personal-data-item{
+    padding-left: 20px;
+    padding-right: 5px;
+}
+
+.template-item2 .table-right-col{
+    padding: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-radius: 15px;
 }
 
 

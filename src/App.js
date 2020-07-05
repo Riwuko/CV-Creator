@@ -110,10 +110,13 @@ render(){
            style={{transform:`scale(${this.state.style.zoom})`}}
            id='capture'
        >
-        <div className={cvTemplateClass} style={this.state.choosenBackground !== 0? { 'backgroundImage': `url(${this.state.choosenBackground})`}:{} || this.state.choosenBackgroundColor !== 0? { 'backgroundColor': this.state.choosenBackgroundColor}:{}  }>
+        <div className={cvTemplateClass} >
+          <div className='template-background' style={this.state.choosenBackground !== 0? { 'backgroundImage': `url(${this.state.choosenBackground})`}:{} || this.state.choosenBackgroundColor !== 0? { 'backgroundColor': this.state.choosenBackgroundColor}:{}  }>
+          </div>
           <CvPage 
             choosenTemplate={this.state.choosenTemplate}
           />
+
          </div>
        </div>
   
