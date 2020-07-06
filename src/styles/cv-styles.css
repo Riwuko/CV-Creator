@@ -5,7 +5,9 @@
     --template-item1-font-accent: rgb(1, 148, 148);
 
     --template-item2-darker-background: #000;
-    --template-item2-font-accent: rgb(2, 150, 248);
+    --template-item2-font-accent: black;
+    --template-item2-font-accent-lighter: rgb(100, 100, 100);
+    --template-item2-font-accent-lightest: rgba(136, 135, 135, 0.966);
     
   }
 
@@ -115,16 +117,17 @@
 
 
 .template-item2 .template-background{
-    height: 100%;
-    width: 230px;
+    height: 21cm;
+    width: 210px;
     padding-top: 0.1px;
     z-index: -1;
     position: fixed;  
 }
 
 .template-item2{
-    padding: 1px 0px 0px 0px;
+    padding: 0.1px;
     height: 100%;
+    width: 16.15cm;
     color: black;
     background-color: white;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
@@ -133,44 +136,64 @@
 }
 
 .template-item2 header{
-    margin-top: 20px;
+    height: 250px;
+    padding-left: 210px;
+    line-height: 10%;
+    color: var(--template-item2-font-accent);
+    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    color: var(--template-item2-font-accent);
+    justify-content: center;
 }
 
 .template-item2 .table{
     display: flex;
     flex-direction: row;
     font-size: 12px;
-    justify-content: space-between;
     line-height: 180%;
 }
 
 
 .template-item2 table td{
     min-width: 100px;
-    max-width: 300px;
+    max-width: 200px;
 }
 
 .template-item2 .table-left-col{
     padding: 0px 0px;
-    width: 300px;
+    width: 200px;
     color: white;
 }
 
 .template-item2 .table-left-col .personal-data-item{
     padding-left: 20px;
-    padding-right: 5px;
 }
 
 .template-item2 .table-right-col{
-    padding: 10px;
-    padding-right: 30px;
-    padding-left: 30px;
-    border-radius: 15px;
+    padding-left: 50px;
 }
+
+.template-item2 .personal-data-item-external{
+    width: 350px;
+}
+
+.template-item2 .single-project{
+    padding-bottom: 10px;
+    line-height: 120%;
+}
+
+.template-item2 .project-title{
+    font-weight: bold;
+    font-size: 13px;
+    color: var(--template-item2-font-accent-lighter);
+}
+
+.template-item2 .project-description{
+    font-style: italic;
+    font-size: 10px;
+    color: var(--template-item2-font-accent-lightest);
+}
+
 
 
 
