@@ -1,7 +1,8 @@
 :root {
     --main-bg-color: #41414a;
     --left-navbar-color: #252526;
-    --top-navbar-color: lightseagreen; 
+    --top-navbar-color: lightseagreen;
+    --top-navbar-color-lighter: rgb(111, 212, 207); 
     --accent-font-color: #ffe151;
     --accent-font-color-light: #ffefa1;
     --main-padding: 15px;
@@ -38,6 +39,7 @@ body{
     font-style: inherit;
     font-family: inherit;
 }
+
 
 .navbar-left-container{
     background-color: var(--left-navbar-color);
@@ -128,3 +130,67 @@ body{
     color: var(--accent-font-color-light);
 }
 
+.hyperlink-panel-open{
+    position: absolute;
+    left: 60%;
+    margin-top: 6vh;
+    margin-bottom:0;
+    height: 9em;
+    width: 20em;
+    z-index: 100;
+    background-color: var(--top-navbar-color);
+    border-radius: 0px 20px 20px 20px;
+    border-bottom: 5px solid var(--top-navbar-color-lighter);
+    border-right: 5px solid var(--top-navbar-color-lighter);
+    border-top: 3px solid var(--top-navbar-color-lighter);
+    border-left: 3px solid var(--top-navbar-color-lighter);
+}
+
+.hyperlink-panel-close{
+    position: absolute;
+    z-index: -10;
+}
+
+.hyperlink-panel-open .close-button {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    font-size: 16px;
+    padding: 10px;
+    position: absolute;
+    right: 0px;
+}
+
+.hyperlink-panel-open .close-button:hover{
+    color: #ccc;
+}
+
+.hyperlink-panel-open .submit-button{
+    border: none;
+    background-color: var(--accent-font-color);
+    border-radius: 20px;
+    justify-content: center;
+    width: 76%;
+    color: var(--top-navbar-color);
+    padding: 10px;
+    margin: 5px;
+    margin-left: 15px;
+}
+
+.hyperlink-panel-open div{
+    color: white;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    margin: 10px 10px 5px 20px;
+}
+
+.hyperlink-panel-open .hyperlink-input{
+    border-radius: 20px;
+    border: none;
+    width: 70%;
+    padding: 10px;
+    margin: 5px;
+    margin-left: 15px;
+}

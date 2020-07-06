@@ -19,10 +19,12 @@ export default class App extends Component {
         choosenTemplate: 'item1',
         choosenBackground: 0,
         choosenBackgroundColor: 0,
+        hyperlinkPanelOpen: false,
       };
       this.handleWheel = this.handleWheel.bind(this);
       this.handleDownloadPDF = this.handleDownloadPDF.bind(this);
       this.handleAddHyperlink = this.handleAddHyperlink.bind(this);
+      this.handleHyperlinkPanel = this.handleHyperlinkPanel.bind(this);
       this.handleChooseTemplate = this.handleChooseTemplate.bind(this);
       this.handleChooseBackground = this.handleChooseBackground.bind(this);
       this.handleChooseBackgroundColor = this.handleChooseBackgroundColor.bind(this);
@@ -50,20 +52,42 @@ export default class App extends Component {
     })
   }
 
-  sleep (milliseconds) {
-    return new Promise(resolve => setTimeout(resolve, milliseconds))
-  }
-
   handleDownloadPDF(){
     document.getElementById("capture").setAttribute('style','transorm:scale("1")');
     this.resume.save();
   }
 
+  handleHyperlinkPanel(){
+    this.setState({
+      hyperlinkPanelOpen:!this.state.hyperlinkPanelOpen,
+    });
+  }
+
   handleAddHyperlink(e){
-    const selection = window.getSelection().toString();
-    console.log(selection);
-    const content = selection.innerHTML;
-    console.log(content);
+    var parentEl = null,sel;
+    if (window.getSelection().type!=='None'){
+      this.setState({
+        hyperlinkPanelOpen: true,
+      });
+      sel = window.getSelection();
+          if (sel.rangeCount) {
+              parentEl = sel.getRangeAt(0).commonAncestorContainer;
+              if (parentEl.nodeType != 1) {
+                  parentEl = parentEl.parentNode;
+              }
+          }
+      var pos = parentEl.innerHTML.search(sel.toString());
+      if(pos!==-1){
+        const before = parentEl.innerHTML.slice(0,pos);
+        const after = parentEl.innerHTML.slice(pos+sel.toString().length);
+        const oldString = parentEl.innerHTML.slice(pos,pos+sel.toString().length);
+        const hyperlinkInput = document.querySelector('input.hyperlink-input').value;
+        const hyperlink = `<a href="${hyperlinkInput}">${oldString}</a>`;
+        const newString = before+hyperlink+after;
+        parentEl.innerHTML = newString;
+      }
+      }
+
   }
 
 
@@ -92,20 +116,34 @@ render(){
     <div className="App-container">
       <NavbarTop 
         onClickDownload = {this.handleDownloadPDF}
-        onClickAddLink = {this.handleAddHyperlink}
+        onClickAddLink = {this.handleHyperlinkPanel}
         />
       <NavbarLeft
         handleChooseTemplate = {this.handleChooseTemplate}
         handleChooseBackground = {this.handleChooseBackground}
         handleChooseBackgroundColor = {this.handleChooseBackgroundColor}
       />
+
+<div className={this.state.hyperlinkPanelOpen ? "hyperlink-panel-open" : "hyperlink-panel-close"}>
+        <button className='close-button' onClick={() => {
+          this.setState({
+            hyperlinkPanelOpen: false,
+          });
+        }} > X </button>
+        <div>Select text and enter hyperlink</div>
+        <input className='hyperlink-input'></input>
+        <button className='submit-button' onClick={this.handleAddHyperlink}>Add link to selection</button>
+      </div>
+
+
       <PDFExport paperSize={'Letter'}
         fileName="curriculumVitae.pdf"
         title="Curriculum Vitae"
         subject=""
         keywords=""
         ref={(r) => this.resume = r}>
-        
+    
+
       <div className='inner-container'onWheel={this.handleWheel} 
            style={{transform:`scale(${this.state.style.zoom})`}}
            id='capture'
@@ -113,13 +151,18 @@ render(){
         <div className={cvTemplateClass} >
           <div className='template-background' style={this.state.choosenBackground !== 0? { 'backgroundImage': `url(${this.state.choosenBackground})`}:{} || this.state.choosenBackgroundColor !== 0? { 'backgroundColor': this.state.choosenBackgroundColor}:{}  }>
           </div>
+
+
           <CvPage 
             choosenTemplate={this.state.choosenTemplate}
           />
 
+          
+
          </div>
        </div>
   
+
       </PDFExport>
 
     </div>
