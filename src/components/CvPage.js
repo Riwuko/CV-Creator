@@ -141,9 +141,43 @@ export default class CvPage extends Component{
 
     generateScheme2(){
         return(
-            <div>
-                <section className='table'>
+            <section className='table'>
+                <div className='table-left-col'>
+                    <div>
+                        {this.generatePersonalInfo()}
+                    </div>
+                    <div>
+                        {this.generateContactInfo()}
+                    </div>
+                </div>
+                <div className="table-right-col">
+                    <div>
+                        {this.generateWorkInfo()}
+                    </div>
+                    <div>
+                        {this.generateAcademicInfo()}
+                    </div>
+                    <div>
+                        {this.generateProjectsInfo()}
+                    </div>
+                </div>
+            </section>
+        )
+    }
+
+    generateScheme3(){
+        return(
+            <section className='table'>
+                    <div className='table-top'>
                     <div className='table-left-col'>
+                        <div>
+                            {this.generateWorkInfo()}
+                        </div>
+                        <div>
+                            {this.generateAcademicInfo()}
+                        </div>
+                    </div>
+                    <div className='table-right-col'>
                         <div>
                             {this.generatePersonalInfo()}
                         </div>
@@ -151,20 +185,14 @@ export default class CvPage extends Component{
                             {this.generateContactInfo()}
                         </div>
                     </div>
-                    <div className="table-right-col">
-                        <div>
-                            {this.generateWorkInfo()}
-                        </div>
-                        <div>
-                            {this.generateAcademicInfo()}
-                        </div>
-                        <div>
-                            {this.generateProjectsInfo()}
-                        </div>
+                    </div>
+                    <div className='table-bottom'>
+   
+                        {this.generateProjectsInfo()}
+
                     </div>
                 </section>
-            </div>
-        )
+        );
     }
 
     render(){
@@ -178,7 +206,7 @@ export default class CvPage extends Component{
                 choosenFunction=this.generateScheme2();
                 break;
             case 'item3':
-                choosenFunction=this.generateScheme2();
+                choosenFunction=this.generateScheme3();
                 break;
             case 'item4':
                 choosenFunction=this.generateScheme2();

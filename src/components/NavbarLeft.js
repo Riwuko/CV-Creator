@@ -7,7 +7,7 @@ import registry from '../registry.json';
 const templatesList = [
     { name: 'item1' , value: 'item1', color: 'white'},
     { name: 'item2' , value: 'item2', color: 'black'},
-    { name: 'item3' , value: 'item3', color: 'white'},
+    { name: 'item3' , value: 'item3', color: 'black'},
     { name: 'item4' , value: 'item4', color: 'white'},
   ];
 

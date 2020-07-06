@@ -72,7 +72,7 @@ export default class App extends Component {
       sel = window.getSelection();
           if (sel.rangeCount) {
               parentEl = sel.getRangeAt(0).commonAncestorContainer;
-              if (parentEl.nodeType != 1) {
+              if (parentEl.nodeType !== 1) {
                   parentEl = parentEl.parentNode;
               }
           }
@@ -82,7 +82,7 @@ export default class App extends Component {
         const after = parentEl.innerHTML.slice(pos+sel.toString().length);
         const oldString = parentEl.innerHTML.slice(pos,pos+sel.toString().length);
         const hyperlinkInput = document.querySelector('input.hyperlink-input').value;
-        const hyperlink = `<a href="${hyperlinkInput}">${oldString}</a>`;
+        const hyperlink = `<a href="https://${hyperlinkInput}">${oldString}</a>`;
         const newString = before+hyperlink+after;
         parentEl.innerHTML = newString;
       }

@@ -33,11 +33,18 @@ body{
     font-weight: inherit;
     color: inherit;
     text-decoration: inherit;
-    outline:none;
+    outline:inherit;
     border: inherit;
     width: inherit;
+    height: inherit;
     font-style: inherit;
     font-family: inherit;
+    align-self: inherit;
+    align-items: inherit;
+    justify-content: inherit;
+    margin: inherit;
+    padding: inherit;
+
 }
 
 
