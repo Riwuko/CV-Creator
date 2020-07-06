@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 import { CirclePicker } from 'react-color';
 import registry from '../registry.json';
+import registryTemplates from '../registryTemplates.json';
 
 // list of items
-const templatesList = [
-    { name: 'item1' , value: 'item1', color: 'white'},
-    { name: 'item2' , value: 'item2', color: 'black'},
-    { name: 'item3' , value: 'item3', color: 'black'},
-    { name: 'item4' , value: 'item4', color: 'white'},
-  ];
+// const templatesList = [
+//     { name: 'item1' , value: 'item1', color: 'white'},
+//     { name: 'item2' , value: 'item2', color: 'black'},
+//     { name: 'item3' , value: 'item3', color: 'black'},
+//     { name: 'item4' , value: 'item4', color: 'black'},
+//   ];
 
 
   const MenuItem = ({ text, selected }) => {
@@ -23,7 +24,7 @@ const templatesList = [
   };
   
   export const Menu = (list) => list.map(el => {
-    const { name,value,color } = el;
+    const {name,value,color } = el;
     var properText=name;
     if(value.includes("jpg")||value.includes("png")){ 
       properText=<div style={{ 'height':100, 'width':100, 'backgroundImage': `url(${value})`,'backgroundSize':150 }}>
@@ -33,7 +34,7 @@ const templatesList = [
     return (
       <MenuItem
         text={properText}
-        key={[value,color]}
+        key={[value,color, name]}
       />
     );
   });
@@ -63,12 +64,13 @@ export default class NavbarLeft extends Component{
     }
 
     onSelectTemplate = key => {
+      console.log(key);
       const keyElems = key.split(",");
         this.setState({
-            selectedTemplate: keyElems[0],
+            selectedTemplate: keyElems[2],
             selectedBackgroundColor: keyElems[1],
         });
-        this.props.handleChooseTemplate(keyElems[0]);
+        this.props.handleChooseTemplate(keyElems[2]);
         this.props.handleChooseBackgroundColor(keyElems[1]);
     }
 
@@ -101,20 +103,39 @@ export default class NavbarLeft extends Component{
         );
     }
 
-
-
     generateBackgroundImages(){
       const imagesFiles=[]
       for (var x in registry){
         const imageName = registry[x];
         const file =require(`../styles/img/bck/${imageName}`);
-        imagesFiles.push({name:`${file.slice(27,-6)}`, value:`${file}`});
+        imagesFiles.push({value:`${file}`});
     }
-    
+
     return imagesFiles;
+  }
+    
+    generateTemplatesImages(){
+      const templatesImages=[]
+      var index=1;
+      for (var x in registryTemplates){
+        const imageName = registryTemplates[x];
+        var color='black';
+        switch (imageName){
+          case '1.png':
+            color='white';
+            break;
+        }
+        const templateName='item'+(index);
+        const file =require(`../styles/img/templates/${imageName}`);
+        templatesImages.push({ name:`${templateName}`,value:`${file}`, color:`${color}`});
+        index+=1;
+      }
+
+    return templatesImages;
     }
 
     render(){
+        const templatesList = this.generateTemplatesImages();
         const { selectedTemplate } = this.state.selectedTemplate;
         const templateMenu = Menu(templatesList, selectedTemplate);
 
