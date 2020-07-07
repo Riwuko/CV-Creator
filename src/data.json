@@ -1,0 +1,47 @@
+{
+  "personalInfo": {
+    "text": "I'm junior Web Developer at the beginning of my IT career. I like blablabla and other blablabla."
+  },
+  "contactInfo": {
+    "email": "jankowalski@gmail.com",
+    "phone": "123 321 000",
+    "github": "JanKow"
+  },
+  "academicInfo": {
+    "0": {
+      "dates": "2012-2015",
+      "school": "Information Technology High School"
+    },
+    "1": {
+      "dates": "2015-2019",
+      "school": "Poznan University of Technology, Computer Science"
+    }
+  },
+  "workInfo": {
+    "0": {
+      "dates": "07.2016-09.2016",
+      "work": "Web Development - internship"
+    },
+    "1": {
+      "dates": "07.2015-09.2015",
+      "work": "Servicement - casual work"
+    }
+  },
+  "projects": {
+    "0": {
+      "title": "Cosmetics analysis website",
+      "description": "Non commercial site for natural cosmetics analysis",
+      "technologies": "Django & Django Admin on Backend, JavaScript, HTML5, CSS on Frontend, PostgreSQL database"
+    },
+    "1": {
+      "title": "Some other website",
+      "description": "Non commercial site for some other stuff",
+      "technologies": "Django & Django Admin on Backend, JavaScript, HTML5, CSS on Frontend, PostgreSQL database"
+    },
+    "2": {
+      "title": "One more project",
+      "description": "Non commercial project as well",
+      "technologies": "Django & Django Admin on Backend, JavaScript, HTML5, CSS on Frontend, PostgreSQL database"
+    }
+  }
+}
